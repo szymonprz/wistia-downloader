@@ -5,8 +5,8 @@ interface WistiaVideoUrlsLoader {
     fun loadVideoUrls(videoCode: String): List<VideoUrl>
 }
 
-data class VideoUrl(val label: String, val url: String) {
-    fun hasLabel(requestedLabel: String): Boolean {
-        return label == requestedLabel
+data class VideoUrl(val resolution: String, val url: String) {
+    fun hasResolution(requestedLabel: String): Boolean {
+        return resolution == requestedLabel
     }
 }

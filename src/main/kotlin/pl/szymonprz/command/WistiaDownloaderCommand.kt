@@ -27,6 +27,17 @@ class WistiaDownloaderCommand : Runnable {
     )
     private lateinit var outputFilePath: String
 
+    @CommandLine.Option(
+        names = ["-r", "--resolution"],
+        description = ["Video resolution to download, default value is 720p"],
+        required = false,
+        defaultValue = "720p"
+    )
+    private lateinit var resolution: String
+
+    @CommandLine.Spec
+    private lateinit var spec: CommandLine.Model.CommandSpec
+
     @Inject
     private lateinit var wistiaDownloader: WistiaDownloader
 
@@ -35,11 +46,11 @@ class WistiaDownloaderCommand : Runnable {
 
     override fun run() {
         videoCode?.let {
-            wistiaDownloader.download(it, outputFilePath)
+            wistiaDownloader.download(it, resolution, outputFilePath)
         } ?: linkAndThumbnail?.let {
             wistiaCodeExtractor.extract(it)
         }?.also {
-            wistiaDownloader.download(it, outputFilePath)
-        } ?: println("missing parameters")
+            wistiaDownloader.download(it, resolution, outputFilePath)
+        } ?: throw CommandLine.ParameterException(spec.commandLine(), "Missing required parameters: -l or -v")
     }
 }

@@ -2,6 +2,7 @@ plugins {
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.allopen") version "1.6.21"
     id("io.quarkus")
+    id ("fr.brouillard.oss.gradle.jgitver") version "0.6.1"
 }
 
 repositories {
@@ -28,7 +29,6 @@ dependencies {
 }
 
 group = "pl.szymonprz"
-version = "0.0.2-SNAPSHOT"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17

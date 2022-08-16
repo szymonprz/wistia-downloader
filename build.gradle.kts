@@ -20,6 +20,7 @@ dependencies {
     implementation("io.quarkus:quarkus-rest-client-jackson")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.quarkus:quarkus-rest-client")
+    implementation("io.quarkus:quarkus-resteasy-jackson") //required for native build
     implementation("io.quarkus:quarkus-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("io.quarkus:quarkus-arc")

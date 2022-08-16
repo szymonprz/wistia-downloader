@@ -3,6 +3,7 @@ package pl.szymonprz.infrastructure
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.ObjectMapper
+import io.quarkus.runtime.annotations.RegisterForReflection
 import org.eclipse.microprofile.rest.client.inject.RestClient
 import pl.szymonprz.domain.VideoUrl
 import pl.szymonprz.domain.WistiaVideoUrlsLoader
@@ -28,5 +29,7 @@ class FastWistiaVideoUrlsLoader : WistiaVideoUrlsLoader {
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@RegisterForReflection
 data class FastWistiaAssets(val assets: List<AssetResponse>)
+@RegisterForReflection
 data class AssetResponse(@JsonProperty("display_name") val displayName: String, val url: String)
